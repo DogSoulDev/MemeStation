@@ -31,7 +31,7 @@ const Login = ({ setAuth }) => {
 								});
 							});
 						});
-						navigate("/home", { replace: true });
+						navigate("/", { replace: true });
 					} else {
 						setAuth(false);
 						dispatch({
@@ -46,7 +46,7 @@ const Login = ({ setAuth }) => {
 	};
 	useEffect(() => {
 		if (window.localStorage.getItem("auth") === "true")
-			navigate("/home", { replace: true });
+			navigate("/", { replace: true });
 	}, [navigate]);
 	return (
 		<>
@@ -64,17 +64,12 @@ const Login = ({ setAuth }) => {
 									href='/#'
 									className='font-medium text-primaryOrange hover:text-primaryOrange'
 								>
-									start your 14-day free trial
+									Be the King/Queen of MemeStation!
 								</a>
 							</p>
 						</div>
 						<div className='mt-8'>
 							<div>
-								<div>
-									<p className='text-sm font-medium text-gray-700'>
-										Sign in with
-									</p>
-								</div>
 								<div
 									onClick={loginWithGoogle}
 									className='flex items-center justify-center  gap-2 px-4 py-2 rounded-md bg-cardOverlay cursor-pointer hover:bg-card hover:shadow-md duration-100 ease-in-out transition-all'

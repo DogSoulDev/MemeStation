@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { FaUsers } from "react-icons/fa";
 import { GiLoveSong, GiMusicalNotes } from "react-icons/gi";
-import { RiUserStarFill } from "react-icons/ri";
-
 import { getAllMemes, getAllGifs, getAllUsers } from "../../../../api";
 import { actionType } from "../../../../hooks/Reducer/Reducer";
 import { useStateValue } from "../../../../hooks/Context/StateProvider";
@@ -54,17 +52,12 @@ const DashboardHome = () => {
 			/>
 			<DashboardCard
 				icon={<GiLoveSong className='text-3xl text-textColor' />}
-				name={"Songs"}
+				name={"Memes"}
 				count={allMemes?.length > 0 ? allMemes?.length : 0}
 			/>
 			<DashboardCard
-				icon={<RiUserStarFill className='text-3xl text-textColor' />}
-				name={"Artist"}
-				count={memes?.length > 0 ? memes?.length : 0}
-			/>
-			<DashboardCard
 				icon={<GiMusicalNotes className='text-3xl text-textColor' />}
-				name={"Album"}
+				name={"Gif"}
 				count={allGifs?.length > 0 ? allGifs?.length : 0}
 			/>
 		</div>

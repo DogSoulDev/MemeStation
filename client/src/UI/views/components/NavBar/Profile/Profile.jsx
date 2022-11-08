@@ -65,12 +65,12 @@ const Profile = () => {
 								<hr />
 							</>
 						)}
-						<p
-							className='text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out'
-							onClick={logout}
-						>
-							Sign out
-						</p>
+            <p
+              className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out"
+              onClick={logout}
+            >
+              Sign out
+            </p>
 					</motion.div>
 				)}
 			</div>

@@ -16,7 +16,9 @@ function Router(auth, setAuth) {
 					<Route index element={<App />} />
 					{/* <Route path='/intro' element={<Intro />} /> */}
 					<Route path='/login' element={<Login setAuth={setAuth} />} />
-					<Route path='/dashboard' element={<Dashboard />} />
+					<Route path='/*' element={<Home />} />
+					<Route path='/dashboard/*' element={<Dashboard />} />
+					<Route path='/userProfile' element={<UserProfile />} />
 					<Route path='/home' element={<Home />} />
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/userprofile' element={<UserProfile />} />

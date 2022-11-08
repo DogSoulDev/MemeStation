@@ -113,11 +113,11 @@ const Dashboard = () => {
 			</div>
 			<div className='my-4 w-full p-4'>
 				<Routes>
-					<Route path='/dashboard' element={<Dashboard />} />
-					<Route path='/dashboardhome' element={<DashboardHome />} />
-					<Route path='/dashboarduser' element={<DashboardUser />} />
-					<Route path='/dashboardmemes' element={<DashboardMemes />} />
-					<Route path='/dashboardgifs' element={<DashboardMemes />} />
+					<Route path='/home' element={<DashboardHome />} />
+					<Route path='/user' element={<DashboardUser />} />
+					<Route path='/meme' element={<DashboardMemes />} />
+
+
 				</Routes>
 			</div>
 			<Footer />

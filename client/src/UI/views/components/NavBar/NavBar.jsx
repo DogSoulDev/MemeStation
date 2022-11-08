@@ -1,26 +1,15 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { isActiveStyles, isNotActiveStyles } from "../../styles/styles";
 import { app } from "../../../../config/firebase.config";
 import { HomeIcon } from "@heroicons/react/20/solid";
 import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
 import { CreditCardIcon } from "@heroicons/react/20/solid";
-import { UsersIcon } from "@heroicons/react/20/solid";
 
 import Profile from "./Profile/Profile";
+import { Logo } from "../../../assets/img";
 
 const NavBar = () => {
-	const navigate = useNavigate();
-	const logout = () => {
-		const firebaseAuth = getAuth(app);
-		firebaseAuth
-			.signOut()
-			.then(() => {
-				window.localStorage.setItem("auth", "false");
-			})
-			.catch((e) => console.log(e));
-		navigate("/login", { replace: true });
-	};
 	return (
 		<header className='w-full bg-primaryHeader border-b-4 border-primaryOrange'>
 			<nav className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8' aria-label='Top'>
@@ -48,7 +37,7 @@ const NavBar = () => {
 								</li>
 								<li className='mx-5 text-lg'>
 									<NavLink
-										to={"/memes"}
+										to={"/meme"}
 										className={({ isActive }) =>
 											isActive ? isActiveStyles : isNotActiveStyles
 										}
@@ -58,7 +47,7 @@ const NavBar = () => {
 								</li>
 								<li className='mx-5 text-lg'>
 									<NavLink
-										to={"/gifs"}
+										to={"/gif"}
 										className={({ isActive }) =>
 											isActive ? isActiveStyles : isNotActiveStyles
 										}
@@ -88,7 +77,7 @@ const NavBar = () => {
 						</li>
 						<li className='mx-5 text-lg'>
 							<NavLink
-								to={"/memes"}
+								to={"/meme"}
 								className={({ isActive }) =>
 									isActive ? isActiveStyles : isNotActiveStyles
 								}
@@ -101,26 +90,13 @@ const NavBar = () => {
 						</li>
 						<li className='mx-5 text-lg'>
 							<NavLink
-								to={"/gifs"}
+								to={"/gif"}
 								className={({ isActive }) =>
 									isActive ? isActiveStyles : isNotActiveStyles
 								}
 							>
 								<CreditCardIcon
 									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#d0ae3e]'
-									aria-hidden='true'
-								/>
-							</NavLink>
-						</li>
-						<li className='mx-5 text-lg'>
-							<NavLink
-								to={"/upload"}
-								className={({ isActive }) =>
-									isActive ? isActiveStyles : isNotActiveStyles
-								}
-							>
-								<UsersIcon
-									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#fb699a]'
 									aria-hidden='true'
 								/>
 							</NavLink>
