@@ -12,7 +12,7 @@ import { storage } from "../../../../config/firebase.config";
 import { useStateValue } from "../../../../hooks/Context/StateProvider";
 import FilterButtons from "../Filter/FilterButtons";
 import { actionType } from "../../../../hooks/Reducer/Reducer";
-import { filterByLanguage, filters } from "../../../../utils/filterFunctions";
+import { filters } from "../../../../utils/filterFunctions";
 import AlertSuccess from "../Alerts/AlertSucces";
 import AlertError from "../Alerts/AlertError";
 
@@ -221,7 +221,6 @@ const DashboardNewSong = () => {
 					<div className='flex w-full justify-between flex-wrap items-center gap-4'>
 						<FilterButtons filterData={memes} flag={"Artist"} />
 						<FilterButtons filterData={allGifs} flag={"Albums"} />
-						<FilterButtons filterData={filterByLanguage} flag={"Language"} />
 						<FilterButtons filterData={filters} flag={"Category"} />
 					</div>
 					<div className='flex items-center justify-between gap-2 w-full flex-wrap'>

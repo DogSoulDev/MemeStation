@@ -3,7 +3,6 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import { isActiveStyles, isNotActiveStyles } from "../../styles/styles";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import { HomeIcon } from "@heroicons/react/20/sulid";
 import DashboardBanner from "./DashboardBanner";
 import DashboardMemes from "./DashboardMemes";
 import DashboardHome from "./DashboardHome";
@@ -28,10 +27,20 @@ const Dashboard = () => {
 										isActive ? isActiveStyles : isNotActiveStyles
 									}
 								>
-									<HomeIcon
-										className='h-5 w-5 flex-shrink-0'
-										aria-hidden='true'
-									/>
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										fill='none'
+										viewBox='0 0 24 24'
+										stroke-width='1.5'
+										stroke='currentColor'
+										class='w-6 h-6'
+									>
+										<path
+											stroke-linecap='round'
+											stroke-linejoin='round'
+											d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'
+										/>
+									</svg>
 								</NavLink>
 								<span className='sr-only'>Home</span>
 							</a>
@@ -104,10 +113,11 @@ const Dashboard = () => {
 			</div>
 			<div className='my-4 w-full p-4'>
 				<Routes>
-					<Route path='/home' element={<DashboardHome />} />
-					<Route path='/user' element={<DashboardUser />} />
-					<Route path='/memes' element={<DashboardMemes />} />
-					<Route path='/gifs' element={<DashboardMemes />} />
+					<Route path='/dashboard' element={<Dashboard />} />
+					<Route path='/dashboardhome' element={<DashboardHome />} />
+					<Route path='/dashboarduser' element={<DashboardUser />} />
+					<Route path='/dashboardmemes' element={<DashboardMemes />} />
+					<Route path='/dashboardgifs' element={<DashboardMemes />} />
 				</Routes>
 			</div>
 			<Footer />

@@ -40,7 +40,7 @@ function App() {
 				});
 				setIsLoading(false);
 				window.localStorage.setItem("auth", "false");
-				navigate("/intro");
+				navigate("/login");
 			}
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps

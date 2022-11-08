@@ -31,14 +31,14 @@ const Login = ({ setAuth }) => {
 								});
 							});
 						});
-						navigate("/", { replace: true });
+						navigate("/home", { replace: true });
 					} else {
 						setAuth(false);
 						dispatch({
 							type: actionType.SET_USER,
 							user: null,
 						});
-						navigate("/");
+						navigate("/login");
 					}
 				});
 			}
