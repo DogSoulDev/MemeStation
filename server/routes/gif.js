@@ -1,4 +1,4 @@
-const meme = require("../models/meme");
+const gif = require("../models/gif");
 const router = require("express").Router();
 
 
@@ -6,7 +6,7 @@ router.get("/getAll", async (req, res) => {
 	const options = {
 		sort: { createdAt: 1 },
 	};
-	const cursor = await meme.find(options);
+	const cursor = await gif.find(options);
 	if (cursor) {
 		res.status(200).send({ success: true, data: cursor });
 	} else {
@@ -16,7 +16,7 @@ router.get("/getAll", async (req, res) => {
 
 router.get("/getOne/:getOne", async (req, res) => {
 	const filter = { _id: req.params.getOne };
-	const cursor = await meme.findOne(filter);
+	const cursor = await gif.findOne(filter);
 	console.log(cursor);
 	if (cursor) {
 		res.status(200).send({ success: true, data: cursor });
@@ -26,13 +26,13 @@ router.get("/getOne/:getOne", async (req, res) => {
 });
 
 router.post("/save", async (req, res) => {
-	const newmeme = meme({
+	const newgif = gif({
 		name: req.body.name,
 		imageURL: req.body.imageURL,
 	});
 	try {
-		const savedmeme = await newmeme.save();
-		res.status(200).send({ meme: savedmeme });
+		const savedgif = await newgif.save();
+		res.status(200).send({ gif: savedgif });
 	} catch (error) {
 		res.status(400).send({ success: false, msg: error });
 	}
@@ -45,7 +45,7 @@ router.put("/update/:updateId", async (req, res) => {
 		new: true,
 	};
 	try {
-		const result = await meme.findOneAndUpdate(
+		const result = await gif.findOneAndUpdate(
 			filter,
 			{
 				name: req.body.name,
@@ -53,7 +53,7 @@ router.put("/update/:updateId", async (req, res) => {
 			},
 			options,
 		);
-		res.status(200).send({ meme: result });
+		res.status(200).send({ gif: result });
 	} catch (error) {
 		res.status(400).send({ success: false, msg: error });
 	}
@@ -61,7 +61,7 @@ router.put("/update/:updateId", async (req, res) => {
 
 router.delete("/delete/:deleteId", async (req, res) => {
 	const filter = { _id: req.params.deleteId };
-	const result = await meme.deleteOne(filter);
+	const result = await gif.deleteOne(filter);
 	if (result.deletedCount === 1) {
 		res.status(200).send({ success: true, msg: "Data Deleted" });
 	} else {

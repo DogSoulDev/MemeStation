@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const memeSchema = mongoose.Schema(
+const gifSchema = mongoose.Schema(
 	{
 		name: {
 			type: String,
@@ -13,4 +13,4 @@ const memeSchema = mongoose.Schema(
 	},
 	{ timestamps: true },
 );
-module.exports = mongoose.model("meme", memeSchema);
+module.exports = mongoose.model("gif", gifSchema);
