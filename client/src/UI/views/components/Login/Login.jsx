@@ -38,7 +38,7 @@ const Login = ({ setAuth }) => {
 							type: actionType.SET_USER,
 							user: null,
 						});
-						navigate("/login");
+						navigate("/");
 					}
 				});
 			}
@@ -46,7 +46,7 @@ const Login = ({ setAuth }) => {
 	};
 	useEffect(() => {
 		if (window.localStorage.getItem("auth") === "true")
-			navigate("/", { replace: true });
+			navigate("/home", { replace: true });
 	}, [navigate]);
 	return (
 		<>

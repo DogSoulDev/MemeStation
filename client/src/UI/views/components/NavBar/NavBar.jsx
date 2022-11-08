@@ -30,7 +30,7 @@ const NavBar = () => {
 							<span className='sr-only'>Your Company</span>
 							<img
 								className='h-20 w-auto'
-								src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSae1YmUaPsbWhB6rhkaZxGDr3oAvNuBKwC7w&usqp=CAU'
+								src='https://i.pinimg.com/originals/84/48/44/84484422a8c90d6810cfffdb68a73267.png'
 								alt=''
 							/>
 						</a>

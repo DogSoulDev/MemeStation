@@ -14,7 +14,7 @@ function Router(auth, setAuth) {
 					<Route index element={<App />} />
 					{/* <Route path='/intro' element={<Intro />} /> */}
 					<Route path='/login' element={<Login setAuth={setAuth} />} />
-					<Route path='/' element={<Dashboard />} />
+					<Route path='/*' element={<Dashboard />} />
 					<Route path='/home' element={<Home />} />
 				</Routes>
 			</BrowserRouter>
