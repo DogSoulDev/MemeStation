@@ -102,7 +102,7 @@ const Footer = () => {
 					))}
 				</div>
 				<p className='mt-8 text-center text-base text-gray-400'>
-					&copy; 2022 Marcel Memes, Inc. All rights reserved.
+					&copy; Assembler let me go to sleep in 2022.
 				</p>
 			</div>
 		</footer>
