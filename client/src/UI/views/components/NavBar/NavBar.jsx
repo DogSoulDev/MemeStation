@@ -81,7 +81,7 @@ const NavBar = () => {
 								}
 							>
 								<HomeIcon
-									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#e91e63]'
+									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#f3709c]'
 									aria-hidden='true'
 								/>
 							</NavLink>
@@ -94,7 +94,7 @@ const NavBar = () => {
 								}
 							>
 								<ArrowTrendingUpIcon
-									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#e91e63]'
+									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#cc9c3d]'
 									aria-hidden='true'
 								/>
 							</NavLink>
@@ -107,7 +107,7 @@ const NavBar = () => {
 								}
 							>
 								<CreditCardIcon
-									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#e91e63]'
+									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#d0ae3e]'
 									aria-hidden='true'
 								/>
 							</NavLink>
@@ -120,7 +120,7 @@ const NavBar = () => {
 								}
 							>
 								<UsersIcon
-									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#e91e63]'
+									className='-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-[#fb699a]'
 									aria-hidden='true'
 								/>
 							</NavLink>

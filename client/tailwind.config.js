@@ -70,7 +70,7 @@ module.exports = {
 				primaryOrange: "#F4694C",
 				primaryBeige: "#FFEFDA",
 				primaryFooter: "#1f2937",
-				primaryHeader: "#04051b",
+				primaryHeader: "#dfc7df",
 				primaryYellow: "#5C76EC",
 			},
 		},
