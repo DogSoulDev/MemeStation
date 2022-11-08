@@ -1,0 +1,108 @@
+import React, { useEffect } from "react";
+import { MdClearAll } from "react-icons/md";
+import { motion } from "framer-motion";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { actionType } from "../../../../hooks/Reducer/Reducer";
+import { useStateValue } from "../../../../hooks/Context/StateProvider";
+import { getAllGifs, getAllMemes } from "../../../../api";
+import { filters } from "../../../../utils/filterFunctions";
+import FilterButtons from "./FilterButtons";
+
+function classNames(...classes) {
+	return classes.filter(Boolean).join(" ");
+}
+
+const Filter = ({ setFilteredSongs }) => {
+	const [{ filterTerm, memes, allGifs }, dispatch] = useStateValue();
+	useEffect(() => {
+		if (!memes) {
+			getAllMemes().then((data) => {
+				dispatch({ type: actionType.SET_MEMES, memes: data.data });
+			});
+		}
+		if (!allGifs) {
+			getAllGifs().then((data) => {
+				dispatch({ type: actionType.SET_ALL_GIFS, allGifs: data.data });
+			});
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+	const updateFilter = (value) => {
+		dispatch({
+			type: actionType.SET_FILTER_TERM,
+			filterTerm: value,
+		});
+	};
+	const clearAllFilter = () => {
+		setFilteredSongs(null);
+		dispatch({ type: actionType.SET_MEME_FILTER, memeFilter: null });
+		dispatch({ type: actionType.SET_GIF_FILTER, gifFilter: null });
+		dispatch({ type: actionType.SET_FILTER_TERM, filterTerm: null });
+	};
+	return (
+		<div className='w-full h-auto flex items-center justify-evenly gap-4 flex-wrap p-4'>
+			<FilterButtons filterData={memes} flag={"Meme"} />
+			<div className=' flex items-center gap-6 mx-4'>
+				<div className='inline-flex rounded-md shadow-sm'>
+					<button
+						type='button'
+						className='relative inline-flex items-center rounded-l-md border border-gray-300 bg-layout px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500'
+					>
+						Memes
+					</button>
+					<Menu as='div' className='relative -ml-px block'>
+						<Menu.Button className='relative inline-flex items-center rounded-r-md border border-gray-300 bg-layout px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500'>
+							<span className='sr-only'>Options!</span>
+							<ChevronDownIcon className='h-5 w-5' aria-hidden='true' />
+						</Menu.Button>
+						<Transition
+							as={Fragment}
+							enter='transition ease-out duration-100'
+							enterFrom='transform opacity-0 scale-95'
+							enterTo='transform opacity-100 scale-100'
+							leave='transition ease-in duration-75'
+							leaveFrom='transform opacity-100 scale-100'
+							leaveTo='transform opacity-0 scale-95'
+						>
+							<Menu.Items className='absolute right-0 z-10 mt-2 -mr-1 w-56 origin-top-right rounded-md bg-layout shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+								<div className='py-1'>
+									{filters?.map((data) => (
+										<Menu.Item key={data.name}>
+											{({ active }) => (
+												<p
+													key={data.id}
+													onClick={() => updateFilter(data.value)}
+													className={classNames(
+														active
+															? "bg-gray-100 text-gray-900"
+															: "text-gray-700",
+														"block px-4 py-2 text-sm",
+													)}
+												>
+													{data.name}
+												</p>
+											)}
+										</Menu.Item>
+									))}
+								</div>
+							</Menu.Items>
+						</Transition>
+					</Menu>
+				</div>
+			</div>
+			<FilterButtons filterData={allGifs} flag={"Gifs"} />
+			<motion.i
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				whileTap={{ scale: 0.75 }}
+				onClick={clearAllFilter}
+			>
+				<MdClearAll className='text-textColor text-xl cursor-pointer' />
+			</motion.i>
+		</div>
+	);
+};
+
+export default Filter;
