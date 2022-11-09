@@ -33,28 +33,29 @@ function Uploader() {
 	};
 
 	return (
-		<div className='container mr-60'>
-			<h3 className='text-white'>
-				React Image Upload And Preview Using Node Js -{" "}
-				<span> codeat21.com </span>{" "}
-			</h3>
-
+		<div className='bg-black pb-5'>
+		<div className='max-w-screen-xl px-4 pt-8 mx-auto sm:px-6 lg:px-8'>
+			<div className='sm:flex sm:items-center sm:justify-between'>
+				<div className='flex justify-center text-teal-300 sm:justify-start'>
+				</div>
+				<p className='mt-4 text-sm text-center text-gray-400 lg:text-right lg:mt-0'>
+					UPLOAD &nbsp; YOUR &nbsp; MEME!
+				</p>
+			</div>
+		</div>
 			<div className='formdesign'>
 				{isSucces !== null ? <h4> {isSucces} </h4> : null}
 				<div className='form-row'>
-					<label className='text-white'>Select Image :</label>
-					<input
+					<input className='flex justify-center form-control'
 						type='file'
-						className='form-control'
 						name='upload_file'
 						onChange={handleInputChange}
 					/>
 				</div>
-
-				<div className='form-row'>
+				<div className='flex justify-center form-row'>
 					<button
 						type='submit'
-						className='btn btn-dark'
+						className='flex justify-center btn btn-dark'
 						onClick={() => submit()}
 					>
 						{" "}
@@ -62,7 +63,6 @@ function Uploader() {
 					</button>
 				</div>
 			</div>
-
 			{userInfo.filepreview !== null ? (
 				<img
 					className='previewimg'

@@ -10,7 +10,7 @@ import Filter from "../../components/Filter/Filter";
 import NavBar from "../../components/NavBar/NavBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Footer from "../../components/Footer/Footer";
-
+import Uploader from "../../components/Uploader/Uploader";
 const Home = () => {
 	const [
 		{ searchTerm, allMemes, allGifs, memeFilter, gifFilter, filterTerm },
@@ -118,16 +118,6 @@ const Home = () => {
 	return (
 		<div className='w-full h-auto flex flex-col items-center justify-center bg-primary'>
 			<NavBar />
-			<SearchBar />
-			{searchTerm.length > 0 && (
-				<p className='my-4 text-base text-textColor'>
-					Searched for :
-					<span className='text-xl text-cartBg font-semibold'>
-						{searchTerm}
-					</span>
-				</p>
-			)}
-			<Filter setFilteredMemes={setFilteredMemes} />
 			<div className='w-full h-auto flex flex-col items-center justify-center bg-[#f3f3f3]'>
 				<div className='w-full relative bg-gradient-to-r from-[#190702] to-[#f7e5a7]'>
 					<img
@@ -222,6 +212,7 @@ const Home = () => {
 					</p>
 				)}
 				<Filter setFilteredMemes={setFilteredMemes} />
+				<Uploader/>
 				<Footer />
 			</div>
 		</div>

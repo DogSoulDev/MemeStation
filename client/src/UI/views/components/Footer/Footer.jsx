@@ -9,7 +9,9 @@ function Footer() {
 			<section className='bg-black'>
 				<div className='max-w-lg bg-black px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center'>
 					<h1 className='font-extrabold leading-10 tracking-tight text-left text-white sm:leading-none md:text-6xl text-4xl lg:text-7xl'>
-						<span className='inline md:block'>Join MemeStation and have fun!</span>
+						<p className='mt-4 text-sm text-center text-gray-400 lg:text-right lg:mt-0'>
+							&nbsp; Upload It! &nbsp; Meme Lovers!
+						</p>
 						<span className=' mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-purple-400 to-orange-500 md:inline-block'>
 							{" "}
 							We Love
@@ -42,7 +44,8 @@ function Footer() {
 							/>
 						</div>
 						<p className='mt-4 text-sm text-center text-gray-400 lg:text-right lg:mt-0'>
-							Assembler &nbsp; Meme Career &nbsp; Privacy & Policy &nbsp; Only for Crazy Developers!
+							Assembler &nbsp; Meme Career &nbsp; Privacy & Policy &nbsp; Only
+							for Crazy Developers!
 						</p>
 					</div>
 				</div>
