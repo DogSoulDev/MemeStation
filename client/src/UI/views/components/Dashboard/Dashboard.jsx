@@ -4,9 +4,10 @@ import { isActiveStyles, isNotActiveStyles } from "../../styles/styles";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import DashboardBanner from "./DashboardBanner";
-import DashboardMemes from "./DashboardMemes";
 import DashboardHome from "./DashboardHome";
 import DashboardUser from "./DashboardUser";
+import DashboardNewMeme from "./DashboardNewMeme";
+import DashboardNewGif from "./DashboardNewGif";
 
 const Dashboard = () => {
 	return (
@@ -33,7 +34,7 @@ const Dashboard = () => {
 										viewBox='0 0 24 24'
 										strokeWidth='1.5'
 										stroke='currentColor'
-										className="w-6 h-6"
+										className='w-6 h-6'
 									>
 										<path
 											strokeLinecap='round'
@@ -74,7 +75,7 @@ const Dashboard = () => {
 						<path d='M5.555 17.776l8-16 .894.448-8 16-.894-.448z' />
 					</svg>
 					<NavLink
-						to={"/dashboard/gifs"}
+						to={"/dashboard/gif"}
 						className={({ isActive }) =>
 							isActive ? isActiveStyles : isNotActiveStyles
 						}
@@ -92,7 +93,7 @@ const Dashboard = () => {
 						<path d='M5.555 17.776l8-16 .894.448-8 16-.894-.448z' />
 					</svg>
 					<NavLink
-						to={"/dashboard/memes"}
+						to={"/dashboard/meme"}
 						className={({ isActive }) =>
 							isActive ? isActiveStyles : isNotActiveStyles
 						}
@@ -115,7 +116,8 @@ const Dashboard = () => {
 				<Routes>
 					<Route path='/home' element={<DashboardHome />} />
 					<Route path='/user' element={<DashboardUser />} />
-					<Route path='/meme' element={<DashboardMemes />} />
+					<Route path='/meme' element={<DashboardNewMeme />} />
+					<Route path='/gif' element={<DashboardNewGif />} />
 				</Routes>
 			</div>
 			<Footer />

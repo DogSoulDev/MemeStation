@@ -21,7 +21,7 @@ export const DashboardCard = ({ icon, name, count }) => {
 };
 
 const DashboardHome = () => {
-	const [{ allUsers, allMemes, memes, allGifs }, dispatch] = useStateValue();
+	const [{ allUsers, allMemes, allGifs }, dispatch] = useStateValue();
 	useEffect(() => {
 		if (!allUsers) {
 			getAllUsers().then((data) => {
@@ -31,13 +31,13 @@ const DashboardHome = () => {
 				});
 			});
 		}
-		if (!memes) {
-			getAllGifs().then((data) => {
-				dispatch({ type: actionType.SET_MEMES, memes: data.data });
+		if (!allMemes) {
+			getAllMemes().then((data) => {
+				dispatch({ type: actionType.SET_ALL_MEMES, allMemes: data.data });
 			});
 		}
 		if (!allGifs) {
-			getAllMemes().then((data) => {
+			getAllGifs().then((data) => {
 				dispatch({ type: actionType.SET_ALL_GIFS, allGifs: data.data });
 			});
 		}
@@ -57,7 +57,7 @@ const DashboardHome = () => {
 			/>
 			<DashboardCard
 				icon={<GiMusicalNotes className='text-3xl text-textColor' />}
-				name={"Gif"}
+				name={"Gifs"}
 				count={allGifs?.length > 0 ? allGifs?.length : 0}
 			/>
 		</div>

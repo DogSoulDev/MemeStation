@@ -16,11 +16,7 @@ import { filters } from "../../../../utils/filterFunctions";
 import AlertSuccess from "../Alerts/AlertSucces";
 import AlertError from "../Alerts/AlertError";
 
-import {
-	getAllGifs,
-	getAllMemes,
-	saveNewMeme,
-} from "../../../../api";
+import { getAllMemes, saveNewMeme, deleteMemeById } from "../../../../api";
 
 export const ImageLoader = ({ progress }) => {
 	return (
@@ -48,10 +44,10 @@ export const ImageUploader = ({
 		const imageFile = e.target.files[0];
 		const storageRef = ref(
 			storage,
-			`${isImage ? "Images" : "Audio"}/${Date.now()}-${imageFile.name}`,
+			`${isImage ? "Images" : "Meme"}/${Date.now()}-${imageFile.name}`,
 		);
-		const uploadTask = uploadBytesResumable(storageRef, imageFile);
-		uploadTask.on(
+		const uploadMeme = uploadBytesResumable(storageRef, imageFile);
+		uploadMeme.on(
 			"state_changed",
 			(snapshot) => {
 				setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -65,7 +61,7 @@ export const ImageUploader = ({
 				isLoading(false);
 			},
 			() => {
-				getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+				getDownloadURL(uploadMeme.snapshot.ref).then((downloadUrl) => {
 					setImageURL(downloadUrl);
 					setProgress(0);
 					isLoading(false);
@@ -86,14 +82,14 @@ export const ImageUploader = ({
 						<BiCloudUpload />
 					</p>
 					<p className='text-lg'>
-						Click to upload {isImage ? "image" : "audio"}
+						Click to upload {isImage ? "image" : "meme"}
 					</p>
 				</div>
 			</div>
 			<input
 				type='file'
 				name='upload-image'
-				accept={`${isImage ? "image/*" : "audio/*"}`}
+				accept={`${isImage ? "image/*" : "meme/*"}`}
 				onChange={uploadImage}
 				className='w-0 h-0'
 			/>
@@ -129,35 +125,29 @@ export const DisabledButton = () => {
 	);
 };
 
-const DashboardNewSong = () => {
+const DashboardNewMeme = () => {
 	const [isImageLoading, setIsImageLoading] = useState(false);
 	const [memeImageUrl, setmemeImageUrl] = useState(null);
 	const [setAlert, setSetAlert] = useState(null);
 	const [alertMsg, setAlertMsg] = useState("");
 	const [uploadProgress, setUploadProgress] = useState(0);
 	const [memeName, setMemeName] = useState("");
-	const [
-		{
-			memes,
-			allGifs,
-			filterTerm,
-		},
-		dispatch,
-	] = useStateValue();
+	const [{ memes, allMemes, filterTerm }, dispatch] = useStateValue();
+
 	useEffect(() => {
 		if (!memes) {
 			getAllMemes().then((data) => {
-				dispatch({ type: actionType.SET_memes, memes: data.data });
+				dispatch({ type: actionType.SET_MEMES, memes: data.data });
 			});
 		}
-		if (!allGifs) {
-			getAllGifs().then((data) => {
-				dispatch({ type: actionType.SET_ALL_ALBUMNS, allGifs: data.data });
+		if (!allMemes) {
+			getAllMemes().then((data) => {
+				dispatch({ type: actionType.SET_ALL_MEMES, allMemes: data.data });
 			});
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-	
+
 	const deleteImageObject = (memeURL, action) => {
 		if (action === "image") {
 			setIsImageLoading(true);
@@ -175,7 +165,7 @@ const DashboardNewSong = () => {
 			setIsImageLoading(false);
 		});
 	};
-	const saveGif = () => {
+	const saveMeme = () => {
 		if (!memeImageUrl || !memeImageUrl || !memeName) {
 			setSetAlert("error");
 			setAlertMsg("Required fields are missing");
@@ -202,8 +192,7 @@ const DashboardNewSong = () => {
 			setIsImageLoading(false);
 			setMemeName("");
 			setmemeImageUrl(null);
-			dispatch({ type: actionType.SET_MEME_FILTER, gifFilter: null });
-			dispatch({ type: actionType.SET_GIF_FILTER, memeFilter: null });
+			dispatch({ type: actionType.SET_MEME_FILTER, memeFilter: null });
 			dispatch({ type: actionType.SET_FILTER_TERM, filterTerm: null });
 		}
 	};
@@ -219,8 +208,8 @@ const DashboardNewSong = () => {
 						onChange={(e) => setMemeName(e.target.value)}
 					/>
 					<div className='flex w-full justify-between flex-wrap items-center gap-4'>
-						<FilterButtons filterData={memes} flag={"Artist"} />
-						<FilterButtons filterData={allGifs} flag={"Albums"} />
+						<FilterButtons filterData={memes} flag={"Meme"} />
+						<FilterButtons filterData={allMemes} flag={"Meme"} />
 						<FilterButtons filterData={filters} flag={"Category"} />
 					</div>
 					<div className='flex items-center justify-between gap-2 w-full flex-wrap'>
@@ -273,8 +262,7 @@ const DashboardNewSong = () => {
 						</div>
 					</div>
 				</div>
-				<div className='flex flex-col items-center justify-center w-full p-4'>
-				</div>
+				<div className='flex flex-col items-center justify-center w-full p-4'></div>
 			</div>
 			{setAlert && (
 				<>
@@ -289,4 +277,4 @@ const DashboardNewSong = () => {
 	);
 };
 
-export default DashboardNewSong;
+export default DashboardNewMeme;

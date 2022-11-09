@@ -3,15 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 //!All imports from API to use them later.
-import {
-	getAllMemes,
-	// saveNewMeme,
-	// deleteMemeById,
-	getAllGifs,
-	// saveNewGif,
-	// deleteGif,
-	// getAllMemesById,
-} from "../../../../api";
+import { getAllMemes, getAllGifs } from "../../../../api";
 import { actionType } from "../../../../hooks/Reducer/Reducer";
 import { useStateValue } from "../../../../hooks/Context/StateProvider";
 import Filter from "../../components/Filter/Filter";
@@ -26,7 +18,6 @@ const Home = () => {
 	] = useStateValue();
 	const [filteredMemes, setFilteredMemes] = useState(null);
 	const [filteredGifs, setFilteredGifs] = useState(null);
-
 
 	//?Memes
 	useEffect(() => {
@@ -75,7 +66,7 @@ const Home = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [filterTerm]);
 
-//?Gifs
+	//?Gifs
 	useEffect(() => {
 		if (!allGifs) {
 			getAllGifs().then((data) => {
