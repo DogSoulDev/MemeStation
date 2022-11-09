@@ -9,12 +9,14 @@ const port = process.env.PORT || 8080;
 const connection = require("./config/database");
 
 app.use(cors());
-app.get("/",(req, res) => {
-	res.json({msg:'Welcome'})
-	
-})
+
+//?Test if it works
+// app.get("/",(req, res) => {
+// 	res.json({msg:'Welcome'})
+// })
+
 const storage = multer.diskStorage({
-	destination: path.join(__dirname, "../public_html/", "uploads"),
+	destination: path.join(__dirname, "../uploaderFolder/", "uploads"),
 	filename: function (req, file, cb) {
 		//? Null as first argument means no error
 		cb(null, Date.now() + "-" + file.originalname);
