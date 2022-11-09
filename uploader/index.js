@@ -9,7 +9,10 @@ const port = process.env.PORT || 8080;
 const connection = require("./config/database");
 
 app.use(cors());
-
+app.get("/",(req, res) => {
+	res.json({msg:'Welcome'})
+	
+})
 const storage = multer.diskStorage({
 	destination: path.join(__dirname, "../public_html/", "uploads"),
 	filename: function (req, file, cb) {
@@ -20,13 +23,12 @@ const storage = multer.diskStorage({
 
 app.post("/imageupload", async (req, res) => {
 	try {
-		//? 'avatar' is the name of our file input field in the HTML form
-		let upload = multer({ storage: storage }).single("avatar");
+		const upload = multer({ storage: storage }).single("meme");
 		upload(req, res, function (err) {
 			//? req.file contains information of uploaded file
 			//? req.body contains information of text fields
 			if (!req.file) {
-				return res.send("Please select an image to upload");
+				return res.send("Please select an Meme to upload!");
 			} else if (err instanceof multer.MulterError) {
 				return res.send(err);
 			} else if (err) {
@@ -47,5 +49,5 @@ app.post("/imageupload", async (req, res) => {
 });
 
 app.listen(port, () =>
-	console.log(`Example app listening at http://localhost:${port}`),
+	console.log(`Uploader On! http://localhost:${port}`),
 );
