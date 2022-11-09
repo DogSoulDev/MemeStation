@@ -16,13 +16,13 @@ const Login = ({ setAuth }) => {
 	// eslint-disable-next-line no-unused-vars
 	const [{ user }, dispatch] = useStateValue();
 	const loginWithGoogle = async () => {
-		await signInWithPopup(firebaseAuth, provider).then((userInfo) => {
-			if (userInfo) {
+		await signInWithPopup(firebaseAuth, provider).then((userCred) => {
+			if (userCred) {
 				setAuth(true);
 				window.localStorage.setItem("auth", "true");
-				firebaseAuth.onAuthStateChanged((userInfo) => {
-					if (userInfo) {
-						userInfo.getIdToken().then((token) => {
+				firebaseAuth.onAuthStateChanged((userCred) => {
+					if (userCred) {
+						userCred.getIdToken().then((token) => {
 							window.localStorage.setItem("auth", "true");
 							validateUser(token).then((data) => {
 								dispatch({
@@ -31,23 +31,25 @@ const Login = ({ setAuth }) => {
 								});
 							});
 						});
-						navigate("/", { replace: true });
+						navigate("/home", { replace: true });
 					} else {
 						setAuth(false);
 						dispatch({
 							type: actionType.SET_USER,
 							user: null,
 						});
-						navigate("/login");
+						navigate("/home");
 					}
 				});
 			}
 		});
 	};
+
 	useEffect(() => {
 		if (window.localStorage.getItem("auth") === "true")
-			navigate("/", { replace: true });
-	}, [navigate]);
+			navigate("/home", { replace: true });
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	return (
 		<>
 			<div className='flex min-h-full'>

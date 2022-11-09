@@ -46,7 +46,7 @@ export const changingUserRole = async (userId, role) => {
 //?Memes
 export const getAllMemes = async () => {
 	try {
-		const res = await axios.get(`${baseURL}api/memes/getAll`);
+		const res = await axios.get(`${baseURL}api/meme/getAll`);
 		return res.data;
 	} catch (error) {
 		return null;
@@ -54,7 +54,7 @@ export const getAllMemes = async () => {
 };
 export const saveNewMeme = async (data) => {
 	try {
-		const res = axios.post(`${baseURL}api/memes/save`, { ...data });
+		const res = axios.post(`${baseURL}api/meme/save`, { ...data });
 		return (await res).data.meme;
 	} catch (error) {
 		return null;
@@ -62,7 +62,7 @@ export const saveNewMeme = async (data) => {
 };
 export const deleteMemeById = async (id) => {
 	try {
-		const res = axios.delete(`${baseURL}api/memes/delete/${id}`);
+		const res = axios.delete(`${baseURL}api/meme/delete/${id}`);
 		return res;
 	} catch (error) {
 		return null;
@@ -73,7 +73,7 @@ export const deleteMemeById = async (id) => {
 //*Gif's
 export const getAllGifs = async () => {
 	try {
-		const res = await axios.get(`${baseURL}api/gifs/getAll`);
+		const res = await axios.get(`${baseURL}api/gif/getAll`);
 		return res.data;
 	} catch (error) {
 		return null;
@@ -81,7 +81,7 @@ export const getAllGifs = async () => {
 };
 export const saveNewGif = async (data) => {
 	try {
-		const res = axios.post(`${baseURL}api/gifs/save`, { ...data });
+		const res = axios.post(`${baseURL}api/gif/save`, { ...data });
 		return (await res).data.gif;
 	} catch (error) {
 		return null;
@@ -89,7 +89,7 @@ export const saveNewGif = async (data) => {
 };
 export const deleteGifById = async (id) => {
 	try {
-		const res = axios.delete(`${baseURL}api/gifs/delete/${id}`);
+		const res = axios.delete(`${baseURL}api/gif/delete/${id}`);
 		return res;
 	} catch (error) {
 		return null;
